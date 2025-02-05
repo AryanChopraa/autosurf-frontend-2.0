@@ -2,13 +2,14 @@
 
 import { useAuth } from '@/contexts/AuthContext'
 import { useRouter } from 'next/navigation'
-import { useEffect } from 'react'
+import { useEffect, FC, ReactNode } from 'react'
+import Sidebar from '@/components/Sidebar'
 
-export default function ProtectedLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+interface ProtectedLayoutProps {
+  children: ReactNode;
+}
+
+const ProtectedLayout: FC<ProtectedLayoutProps> = ({ children }) => {
   const { user, loading } = useAuth()
   const router = useRouter()
 
@@ -37,5 +38,14 @@ export default function ProtectedLayout({
   }
 
   // If authenticated, render the protected content
-  return <>{children}</>
-} 
+  return (
+    <div className="flex min-h-screen bg-gradient-to-b from-white via-white to-black/5">
+      <Sidebar />
+      <main className="flex-1 relative">
+        {children}
+      </main>
+    </div>
+  )
+}
+
+export default ProtectedLayout 

@@ -25,8 +25,8 @@ export default function RootLayout({
     <html lang="en" className={sourceSerif.variable}>
       <body className="antialiased min-h-screen bg-[#FAF9F6] text-[#1B1B1B]">
         <AuthProvider>
-          <Navbar />
-          <main className="pt-20">
+          {/* Navbar will be rendered in individual pages where needed */}
+          <main>
             {children}
           </main>
           <Toaster 
