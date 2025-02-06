@@ -135,13 +135,26 @@ export async function startBrowserSession(runObjective: string): Promise<Browser
   }
 }
 
+
+interface Step {
+  number: number;
+  action: string;
+  explanation: string;
+}
+
+interface AgentRunSteps {
+  steps: Step[];
+  finalAnswer: string;
+}
+
 export interface AgentRun {
-  id: string;
-  user_id: string;
-  run_objective: string;
-  started_at: string;
-  completed_at: string | null;
-  status: 'PENDING' | 'COMPLETED' | 'IN_PROGRESS' | 'FAILED';
+    id: string;
+    user_id: string;
+    run_objective: string;
+    started_at: string;
+    completed_at: string | null;
+    status: 'PENDING' | 'COMPLETED' | 'IN_PROGRESS' | 'FAILED';
+    steps: AgentRunSteps | null;
 }
 
 interface AgentRunsResponse {
