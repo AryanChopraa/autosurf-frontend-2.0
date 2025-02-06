@@ -1,7 +1,7 @@
 'use client'
 
 import { useAuth } from '@/contexts/AuthContext'
-import { useRouter } from 'next/navigation'
+import { useRouter, usePathname } from 'next/navigation'
 import { useEffect, FC, ReactNode } from 'react'
 import Sidebar from '@/components/Sidebar'
 
@@ -12,6 +12,8 @@ interface ProtectedLayoutProps {
 const ProtectedLayout: FC<ProtectedLayoutProps> = ({ children }) => {
   const { user, loading } = useAuth()
   const router = useRouter()
+  const pathname = usePathname()
+  const isBrowserRoute = pathname?.startsWith('/browser/')
 
   useEffect(() => {
     // Redirect to login if not authenticated
@@ -40,8 +42,8 @@ const ProtectedLayout: FC<ProtectedLayoutProps> = ({ children }) => {
   // If authenticated, render the protected content
   return (
     <div className="flex min-h-screen bg-gradient-to-b from-white via-white to-black/5">
-      <Sidebar />
-      <main className="flex-1 relative">
+      {!isBrowserRoute && <Sidebar />}
+      <main className={`flex-1 relative min-h-screen overflow-auto ${!isBrowserRoute ? 'ml-72' : ''}`}>
         {children}
       </main>
     </div>

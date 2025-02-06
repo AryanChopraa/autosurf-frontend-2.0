@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Navbar from '@/components/Navbar';
 import BackgroundTexture from '@/components/BackgroundTexture';
+import Footer from '@/components/Footer';
 
 export default function HomePage() {
   return (
@@ -73,6 +74,7 @@ export default function HomePage() {
           </section>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }

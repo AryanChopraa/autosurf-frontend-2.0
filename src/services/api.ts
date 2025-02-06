@@ -115,6 +115,55 @@ export async function deleteApiKey(provider: ApiKeyProvider): Promise<void> {
   }
 }
 
+interface BrowserSessionResponse {
+  status: string;
+  data: {
+    id: string;
+  };
+}
+
+export async function startBrowserSession(runObjective: string): Promise<BrowserSessionResponse> {
+  try {
+    const headers = await getAuthHeader();
+    const response = await apiClient.post<BrowserSessionResponse>(`/agent/create-run`, { runObjective }, { headers });
+    console.log("response", response.data);
+    return response.data;
+  } catch (error: any) {
+    console.log("error", error);
+    // handleApiError(error);
+    throw error.response.data.message;
+  }
+}
+
+export interface AgentRun {
+  id: string;
+  user_id: string;
+  run_objective: string;
+  started_at: string;
+  completed_at: string | null;
+  status: 'PENDING' | 'COMPLETED' | 'IN_PROGRESS' | 'FAILED';
+}
+
+interface AgentRunsResponse {
+  status: string;
+  results: number;
+  data: {
+    agentRuns: AgentRun[];
+  };
+}
+
+export const getAllRuns = async (): Promise<AgentRunsResponse> => {
+  try {
+    const headers = await getAuthHeader();
+    const response = await apiClient.get<AgentRunsResponse>(`/agent/all-runs`, { headers });
+    console.log("response", response.data);
+    return response.data;
+  } catch (error) {
+    // handleApiError(error);
+    throw error;
+  }
+}
+
 export const apiService = {
   getUserApiKeys,
   addApiKey,

@@ -25,7 +25,7 @@ const Sidebar: FC = () => {
   };
 
   return (
-    <div className="relative h-screen w-72 bg-white fixed left-0 font-[var(--font-serif)] shadow-[4px_0_24px_rgba(0,0,0,0.02)] border-r border-black/5 flex flex-col overflow-hidden">
+    <div className="fixed top-0 left-0 h-screen w-72 bg-white font-[var(--font-serif)] shadow-[4px_0_24px_rgba(0,0,0,0.02)] border-r border-black/5 flex flex-col overflow-hidden z-50">
       {/* Background Pattern */}
       <div className="absolute inset-0 z-0 opacity-[0.03]" 
         style={{

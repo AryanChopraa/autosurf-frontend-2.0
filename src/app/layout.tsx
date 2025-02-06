@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Source_Serif_4 } from "next/font/google";
+import { Source_Serif_4, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { AuthProvider } from "@/contexts/AuthContext";
 import { Toaster } from 'react-hot-toast';
@@ -9,6 +9,11 @@ const sourceSerif = Source_Serif_4({
   subsets: ['latin'],
   weight: ['400', '500', '600'],
   variable: '--font-serif',
+});
+
+const playfair = Playfair_Display({
+  subsets: ['latin'],
+  variable: '--font-playfair',
 });
 
 export const metadata: Metadata = {
@@ -22,7 +27,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={sourceSerif.variable}>
+    <html lang="en" className={`${sourceSerif.variable} ${playfair.variable}`}>
       <body className="antialiased min-h-screen bg-[#FAF9F6] text-[#1B1B1B]">
         <AuthProvider>
           {/* Navbar will be rendered in individual pages where needed */}
@@ -30,13 +35,13 @@ export default function RootLayout({
             {children}
           </main>
           <Toaster 
-            position="bottom-right"
+            position="top-center"
             toastOptions={{
+              duration: 3000,
               style: {
-                background: '#1a1a1a',
+                background: '#363636',
                 color: '#fff',
-                borderRadius: '12px',
-                border: '1px solid rgba(255, 255, 255, 0.1)',
+                borderRadius: '10px',
               },
             }}
           />
