@@ -68,7 +68,7 @@ const Sidebar: FC = () => {
             }`}
           >
             <BookmarkIcon className={`w-5 h-5 mr-3 transition-transform group-hover:scale-110 ${
-              isActiveLink('/saved-automations') ? '' : 'group-hover:text-[#1B1B1B]'
+              isActiveLink('/automations') ? '' : 'group-hover:text-[#1B1B1B]'
             }`} />
             <span className="font-medium">Saved Automations</span>
           </Link>

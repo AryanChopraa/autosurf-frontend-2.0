@@ -2,7 +2,7 @@ import axios from 'axios';
 import type { AxiosError } from 'axios';
 import { ApiKey, ApiKeyProvider } from '../store/apiKeyStore';
 import { createClient } from '@supabase/supabase-js';
-
+import { Automation, AutomationResponse, CreateAutomationRequest } from '../types';
 // Initialize Supabase client
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -177,9 +177,77 @@ export const getAllRuns = async (): Promise<AgentRunsResponse> => {
   }
 }
 
+export const getAllAutomations = async (): Promise<AutomationResponse> => {
+  try {
+    const headers = await getAuthHeader();
+    const response = await apiClient.get<AutomationResponse>(`/automations/fetch/all`, { headers });
+    console.log("response", response.data);
+    return response.data;
+  } catch (error: any) {
+    // handleApiError(error);
+    throw error.response.data.message;
+  }
+}
+
+
+export const createAutomation = async (data: CreateAutomationRequest): Promise<any> => {
+  try {
+    const headers = await getAuthHeader();
+    const response = await apiClient.post(`/automations/create`, data, { headers });
+    console.log("response", response.data);
+    return response.data;
+  } catch (error: any) {
+    // handleApiError(error);
+    throw error.response.data.message;
+  }
+}
+
+export const updateAutomation = async (data: Automation): Promise<any> => {
+  try {
+    const headers = await getAuthHeader();
+    const response = await apiClient.put(`/automations/update`, data, { headers });
+    console.log("response", response.data);
+    return response.data;
+  } catch (error: any) {
+    // handleApiError(error);
+    throw error.response.data.message;
+  }
+}
+
+export const deleteAutomation = async (id: string): Promise<any> => {
+  try {
+    const headers = await getAuthHeader();
+    const response = await apiClient.delete(`/automations/delete/${id}`, { headers });
+    console.log("response", response.data);
+    return response.data;
+  } catch (error: any) {
+    // handleApiError(error);
+    throw error.response.data.message;
+  }
+}
+
+export const fetchAutomationById = async (id: string): Promise<any> => {
+  try {
+    const headers = await getAuthHeader();
+    const response = await apiClient.get(`/fetch/${id}`, { headers });
+    console.log("response", response.data);
+    return response.data;
+  } catch (error: any) {
+    // handleApiError(error);
+    throw error.response.data.message;
+  }
+}
+
 export const apiService = {
   getUserApiKeys,
   addApiKey,
   updateApiKey,
   deleteApiKey,
+  startBrowserSession,
+  getAllRuns,
+  getAllAutomations,
+  createAutomation,
+  updateAutomation,
+  deleteAutomation,
+  fetchAutomationById,
 }; 

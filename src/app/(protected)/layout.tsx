@@ -14,7 +14,7 @@ const ProtectedLayout: FC<ProtectedLayoutProps> = ({ children }) => {
   const router = useRouter()
   const pathname = usePathname()
   const isBrowserRoute = pathname?.startsWith('/browser/')
-
+  const isSavedAutomationsRoute = pathname?.startsWith('/saved-automations/')
   useEffect(() => {
     // Redirect to login if not authenticated
     if (!loading && !user) {
@@ -42,8 +42,8 @@ const ProtectedLayout: FC<ProtectedLayoutProps> = ({ children }) => {
   // If authenticated, render the protected content
   return (
     <div className="flex min-h-screen bg-gradient-to-b from-white via-white to-black/5">
-      {!isBrowserRoute && <Sidebar />}
-      <main className={`flex-1 relative min-h-screen overflow-auto ${!isBrowserRoute ? 'ml-72' : ''}`}>
+      {!isBrowserRoute && !isSavedAutomationsRoute && <Sidebar />}
+      <main className={`flex-1 relative min-h-screen overflow-auto ${!isBrowserRoute && !isSavedAutomationsRoute ? 'ml-72' : ''}`}>
         {children}
       </main>
     </div>

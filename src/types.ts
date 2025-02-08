@@ -79,4 +79,27 @@ export interface ExtendedAIBrowserAgent {
     getExecutedCommands(): Promise<ScriptCommand[]>;
     close(): Promise<void>;
     captureScreenshot(): Promise<string | null>;
+    onStepUpdate: ((step: Step) => void) | null;
 } 
+
+export interface Automation {
+    id: string;
+    user_id: string;
+    automation_name: string;
+    steps: ScriptCommand[];
+    objective: string;
+    created_at: string;
+    updated_at?: string|null;
+}
+
+export interface AutomationResponse {
+    message: string;
+    data: {
+        automations: Automation[];
+    };
+}
+
+export interface CreateAutomationRequest {
+    automationName: string;
+    agentRunId: string;
+  }
