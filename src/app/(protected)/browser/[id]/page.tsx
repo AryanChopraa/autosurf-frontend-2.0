@@ -168,7 +168,8 @@ export default function BrowserView({ params }: { params: Promise<{ id: string }
   }, [resolvedParams.id]);
 
   const renderBrowserContent = () => {
-    if (status === 'completed' || status === 'failed') {
+    // Only show completion screen for existing runs
+    if ((status === 'completed' || status === 'failed') && steps.length === 0) {
       return (
         <div className="flex flex-col items-center justify-center h-full">
           <div className="text-6xl font-thin text-gray-500">

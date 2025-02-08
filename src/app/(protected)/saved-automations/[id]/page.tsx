@@ -50,7 +50,7 @@ export default function SavedAutomationView({ params }: { params: Promise<{ id: 
         console.log('[WebSocket] Getting auth session');
         const { data: { session }, error } = await supabase.auth.getSession();
         if (error || !session?.access_token) {
-          console.error('[WebSocket] Authentication failed:', error);
+          console.log('[WebSocket] Authentication failed:', error);
           throw new Error('Authentication failed');
         }
         console.log('[WebSocket] Auth session retrieved successfully');
@@ -137,23 +137,29 @@ export default function SavedAutomationView({ params }: { params: Promise<{ id: 
                 console.log('[WebSocket] Automation completed:', message);
                 setStatus('completed');
                 setFinalAnswer(message.message);
-                setShowDialog(true);
-                ws?.close();
+                setTimeout(() => {
+                  console.log('[WebSocket] Closing connection after delay');
+                  setShowDialog(true);
+                  ws?.close();
+                }, 3000);
                 break;
 
               case 'failed':
-                console.error('[WebSocket] Automation failed:', message.error);
+                console.log('[WebSocket] Automation failed:', message.error);
                 setStatus('failed');
                 setFinalAnswer(message.error);
-                setShowDialog(true);
-                ws?.close();
+                setTimeout(() => {
+                  console.log('[WebSocket] Closing connection after delay');
+                  setShowDialog(true);
+                  ws?.close();
+                }, 3000);
                 break;
 
               default:
                 console.warn('[WebSocket] Unhandled message type:', message.type);
             }
           } catch (error) {
-            console.error('[WebSocket] Failed to parse message:', error);
+            console.log('[WebSocket] Failed to parse message:', error);
           }
         };
 
@@ -163,13 +169,13 @@ export default function SavedAutomationView({ params }: { params: Promise<{ id: 
         };
 
         ws.onerror = (error) => {
-          console.error('[WebSocket] Error occurred:', error);
+          console.log('[WebSocket] Error occurred:', error);
           setConnectionFailed(true);
           setIsConnected(false);
         };
 
       } catch (error) {
-        console.error('[WebSocket] Connection failed:', error);
+        console.log('[WebSocket] Connection failed:', error);
         setConnectionFailed(true);
         setIsConnected(false);
       }
@@ -189,23 +195,18 @@ export default function SavedAutomationView({ params }: { params: Promise<{ id: 
 
   const renderBrowserContent = () => {
     console.log('[Render] Rendering browser content. Status:', status);
-    if (status === 'completed' || status === 'failed') {
+    
+    if (screenshot) {
       return (
-        <div className="flex flex-col items-center justify-center h-full">
-          <div className="text-6xl font-thin text-gray-500">
-            Task {status === 'completed' ? 'Completed' : 'Failed'}
-          </div>
-        </div>
+        <img 
+          src={`data:image/png;base64,${screenshot}`} 
+          alt="Browser Screenshot" 
+          className="w-full h-full object-contain"
+        />
       );
     }
 
-    return screenshot ? (
-      <img 
-        src={`data:image/png;base64,${screenshot}`} 
-        alt="Browser Screenshot" 
-        className="w-full h-full object-contain"
-      />
-    ) : (
+    return (
       <div className="loading-circle">
         <div className="loading-ball bg-black/80"></div>
         <div className="loading-ball bg-black/60"></div>

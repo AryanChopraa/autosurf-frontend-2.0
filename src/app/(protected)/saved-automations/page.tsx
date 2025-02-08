@@ -142,12 +142,12 @@ export default function SavedAutomations() {
         <div className="max-w-6xl mx-auto">
           <div className="flex justify-between items-center mb-8">
             <h1 className="text-2xl font-medium text-[#1B1B1B]">Saved Automations</h1>
-            <button 
+            {/* <button 
               onClick={() => router.push('/browser')}
               className="bg-[#1B1B1B] text-white px-6 py-2.5 rounded-[14px] text-sm transition-colors hover:bg-[#2C2C2C]"
             >
-              Create New
-            </button>
+              Create New Automation +
+            </button> */}
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
