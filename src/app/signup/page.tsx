@@ -75,11 +75,11 @@ export default function SignupPage() {
               Verify your email
             </h2>
             <p className="mt-2 text-sm text-gray-600">
-              We've sent a verification link to <span className="font-medium">{email}</span>. Please check your email and click the link to complete your registration.
+              We&apos;ve sent a verification link to <span className="font-medium">{email}</span>. Please check your email and click the link to complete your registration.
             </p>
             <div className="mt-6">
               <p className="text-sm text-gray-500">
-                Didn't receive the email? Check your spam folder or{' '}
+                Didn&apos;t receive the email? Check your spam folder or
                 <button
                   onClick={handleSignUp}
                   className="font-medium text-indigo-600 hover:text-indigo-500"

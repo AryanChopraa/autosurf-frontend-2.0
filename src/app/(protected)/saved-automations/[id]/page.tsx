@@ -1,14 +1,12 @@
 'use client';
 
 import { useState, useEffect, use, useRef } from 'react';
-import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import BackgroundTexture from '@/components/BackgroundTexture';
 import ResultDialog from '@/components/ResultDialog';
 import { createClient } from '@supabase/supabase-js';
 import toast from 'react-hot-toast';
 import '@/styles/animations.css';
-import { Step } from '@/types';
 
 // Initialize Supabase client
 const supabase = createClient(
@@ -18,7 +16,7 @@ const supabase = createClient(
 
 // WebSocket connection URL
 const WS_URL = process.env.NODE_ENV === 'production' 
-  ? 'wss://your-domain.com'
+  ? 'wss://api.autosurf.tech/automation'
   : 'ws://localhost:8080/automation';
 
 interface SavedAutomationStep {

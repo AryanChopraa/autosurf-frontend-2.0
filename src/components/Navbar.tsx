@@ -20,13 +20,20 @@ export default function Navbar() {
             {/* Auth Buttons / Dashboard */}
             <div className="flex items-center space-x-6">
               {user ? (
-                <Link
-                  href="/dashboard"
-                  className="bg-[#1B1B1B] text-white px-5 py-2.5 rounded-[14px] text-sm font-medium transition-colors hover:bg-[#2C2C2C] flex items-center gap-2"
-                >
-                
-                  Dashboard
-                </Link>
+                <>
+                  <Link
+                    href="/dashboard"
+                    className="bg-[#1B1B1B] text-white px-5 py-2.5 rounded-[14px] text-sm font-medium transition-colors hover:bg-[#2C2C2C] flex items-center gap-2"
+                  >
+                    Dashboard
+                  </Link>
+                  <button
+                    onClick={signOut}
+                    className="text-[#1B1B1B]/80 hover:text-[#1B1B1B] px-4 py-2 text-sm font-medium"
+                  >
+                    Sign out
+                  </button>
+                </>
               ) : (
                 <>
                   <Link

@@ -3,33 +3,18 @@
 import { useAuth } from '@/contexts/AuthContext'
 import { useRouter } from 'next/navigation'
 import { useState, useEffect } from 'react'
-import Image from 'next/image'
-import { useApiKeyStore } from '@/store/apiKeyStore'
-import { getUserApiKeys, addApiKey, updateApiKey, deleteApiKey } from '@/services/api'
-import { ApiKey, ApiKeyProvider } from '@/store/apiKeyStore'
-import { EyeIcon, EyeSlashIcon } from '@heroicons/react/24/outline'
 import toast from 'react-hot-toast'
-
-const providers: ApiKeyProvider[] = ['claude', 'gemini', 'openai', 'deepseek']
 
 export default function ProfilePage() {
   const { user, loading, signOut } = useAuth()
   const router = useRouter()
-  const { apiKeys, setApiKeys } = useApiKeyStore()
-  const [newProvider, setNewProvider] = useState<ApiKeyProvider>('claude')
-  const [newKey, setNewKey] = useState('')
-  const [isLoading, setIsLoading] = useState(false)
-  const [error, setError] = useState('')
-  const [visibleKeys, setVisibleKeys] = useState<Record<string, boolean>>({})
   const [isEditing, setIsEditing] = useState(false)
 
   useEffect(() => {
-    if (!loading && user) {
-      loadApiKeys()
-    } else if (!loading && !user) {
+    if (!loading && !user) {
       router.push('/login')
     }
-  }, [user, loading])
+  }, [user, loading, router])
 
   const handleSignOut = async () => {
     try {
@@ -39,78 +24,6 @@ export default function ProfilePage() {
       console.error('Error signing out:', error)
       toast.error('Failed to sign out. Please try again.')
     }
-  }
-
-  const loadApiKeys = async () => {
-    const loadingToast = toast.loading('Loading API keys...')
-    try {
-      setIsLoading(true)
-      setError('')
-      const keys = await getUserApiKeys()
-      setApiKeys(keys)
-      toast.success('API keys loaded successfully', { id: loadingToast })
-    } catch (err) {
-      const errorMessage = err instanceof Error ? err.message : 'Failed to load API keys'
-      setError(errorMessage)
-      toast.error(errorMessage, { id: loadingToast })
-      console.error('Load API Keys Error:', err)
-    } finally {
-      setIsLoading(false)
-    }
-  }
-
-  const handleAddKey = async (e: React.FormEvent) => {
-    e.preventDefault()
-    const loadingToast = toast.loading('Adding API key...')
-    try {
-      setIsLoading(true)
-      setError('')
-      const apiKey: ApiKey = {
-        provider: newProvider,
-        key: newKey,
-      }
-      await addApiKey(apiKey)
-      await loadApiKeys()
-      setNewKey('')
-      toast.success('API key added successfully', { id: loadingToast })
-    } catch (err) {
-      const errorMessage = err instanceof Error ? err.message : 'Failed to add API key'
-      setError(errorMessage)
-      toast.error(errorMessage, { id: loadingToast })
-      console.error('Add API Key Error:', err)
-    } finally {
-      setIsLoading(false)
-    }
-  }
-
-  const handleDeleteKey = async (provider: ApiKeyProvider) => {
-    const loadingToast = toast.loading('Deleting API key...')
-    try {
-      setIsLoading(true)
-      setError('')
-      await deleteApiKey(provider)
-      await loadApiKeys()
-      toast.success('API key deleted successfully', { id: loadingToast })
-    } catch (err) {
-      const errorMessage = err instanceof Error ? err.message : 'Failed to delete API key'
-      setError(errorMessage)
-      toast.error(errorMessage, { id: loadingToast })
-      console.error('Delete API Key Error:', err)
-    } finally {
-      setIsLoading(false)
-    }
-  }
-
-  const toggleKeyVisibility = (provider: string) => {
-    setVisibleKeys(prev => ({
-      ...prev,
-      [provider]: !prev[provider]
-    }))
-  }
-
-  const formatApiKey = (key: string, isVisible: boolean) => {
-    if (isVisible) return key
-    return `${key.slice(0, 4)}...${key.slice(-4)}`
   }
 
   if (loading) {
@@ -202,6 +115,21 @@ export default function ProfilePage() {
                 </div>
                 <button className="px-4 py-2 text-sm font-medium text-red-600 bg-red-50 rounded-[14px] hover:bg-red-100 transition-colors">
                   Delete
+                </button>
+              </div>
+              
+              <div className="flex items-center justify-between py-3 px-4 bg-black/5 rounded-[14px]">
+                <div>
+                  <p className="text-sm font-medium text-[#1B1B1B]">Sign Out</p>
+                  <p className="text-xs text-[#1B1B1B]/60">
+                    Sign out of your account
+                  </p>
+                </div>
+                <button 
+                  onClick={handleSignOut}
+                  className="px-4 py-2 text-sm font-medium text-[#1B1B1B] bg-black/10 rounded-[14px] hover:bg-black/20 transition-colors"
+                >
+                  Sign Out
                 </button>
               </div>
             </div>

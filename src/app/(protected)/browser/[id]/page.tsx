@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect, use, useRef } from 'react';
-import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import BackgroundTexture from '@/components/BackgroundTexture';
 import ResultDialog from '@/components/ResultDialog';
@@ -19,7 +18,7 @@ const supabase = createClient(
 
 // WebSocket connection URL
 const WS_URL = process.env.NODE_ENV === 'production' 
-  ? 'wss://your-domain.com'
+  ? 'wss://api.autosurf.tech/agent'
   : 'ws://localhost:8080/agent';
 
 export default function BrowserView({ params }: { params: Promise<{ id: string }> }) {
@@ -31,11 +30,9 @@ export default function BrowserView({ params }: { params: Promise<{ id: string }
   const [finalAnswer, setFinalAnswer] = useState<string | null>(null);
   const [status, setStatus] = useState<'connecting' | 'inprogress' | 'completed' | 'failed'>('connecting');
   const [showDialog, setShowDialog] = useState(false);
-  const [copied, setCopied] = useState(false);
   const [showSaveDialog, setShowSaveDialog] = useState(false);
   const [automationName, setAutomationName] = useState('');
   const [isSaving, setIsSaving] = useState(false);
-  const dialogRef = useRef<HTMLDialogElement>(null);
   const router = useRouter();
   const agentStarted = useRef(false);
 

@@ -3,7 +3,6 @@ import { Source_Serif_4, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { AuthProvider } from "@/contexts/AuthContext";
 import { Toaster } from 'react-hot-toast';
-import Navbar from "@/components/Navbar";
 
 const sourceSerif = Source_Serif_4({
   subsets: ['latin'],

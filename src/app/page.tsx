@@ -18,7 +18,7 @@ export default function HomePage() {
                   What is Autosurf?
                 </h1>
                 <p className="mt-6 text-xl leading-relaxed text-[#1B1B1B]/80">
-                  Autosurf is your AI-powered Swiss Army Knife for web automation and information discovery. It's not just about automating tasks; it's about empowering you to do more—whether you're looking to streamline workflows, collect data, or explore new possibilities.
+                  Autosurf is your AI-powered Swiss Army Knife for web automation and information discovery. It&apos;s not just about automating tasks; it&apos;s about empowering you to do more—whether you&apos;re looking to streamline workflows, collect data, or explore new possibilities.
                 </p>
                 <div className="mt-10 flex flex-wrap gap-4 justify-center">
                   <Link

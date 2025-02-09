@@ -79,7 +79,7 @@ export default function LoginPage() {
             </p>
             <div className="mt-6">
               <p className="text-sm text-gray-500">
-                Please check your email for the verification link. If you haven't received it,{' '}
+                Please check your email for the verification link. If you haven&apos;t received it,
                 <button
                   onClick={handleResendVerification}
                   className="font-medium text-indigo-600 hover:text-indigo-500"
@@ -193,7 +193,7 @@ export default function LoginPage() {
 
           <div className="mt-6 text-center text-sm">
             <Link href="/signup" className="font-medium text-[#1B1B1B] hover:text-[#2C2C2C] transition-colors">
-              Don't have an account? <span className="underline">Sign up</span>
+              Don&apos;t have an account? <span className="underline">Sign up</span>
             </Link>
           </div>
         </div>

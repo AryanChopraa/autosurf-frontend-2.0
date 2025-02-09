@@ -10,7 +10,7 @@ const supabase = createClient(
 );
 
 // API Configuration
-const API_BASE_URL = 'http://localhost:8080/api';
+const API_BASE_URL = 'https://api.autosurf.tech/api';
 
 // Create axios instance with default config
 const apiClient = axios.create({
@@ -33,21 +33,21 @@ const getAuthHeader = async () => {
 };
 
 // Error handler helper
-const handleApiError = (error: unknown) => {
-  if (error && typeof error === 'object' && 'isAxiosError' in error) {
-    const axiosError = error as AxiosError<{ message: string }>;
-    if (axiosError.response?.data?.message) {
-      throw new Error(axiosError.response.data.message);
-    } else if (axiosError.response?.status === 400) {
-      throw new Error('API key is required');
-    } else if (axiosError.response?.status === 401) {
-      throw new Error('Unauthorized access. Please sign in again.');
-    } else if (axiosError.response?.status === 403) {
-      throw new Error('Access forbidden. You do not have permission to perform this action.');
-    }
-  }
-  throw new Error('An unexpected error occurred. Please try again later.');
-};
+// const handleApiError = (error: unknown) => {
+//   if (error && typeof error === 'object' && 'isAxiosError' in error) {
+//     const axiosError = error as AxiosError<{ message: string }>;
+//     if (axiosError.response?.data?.message) {
+//       throw new Error(axiosError.response.data.message);
+//     } else if (axiosError.response?.status === 400) {
+//       throw new Error('API key is required');
+//     } else if (axiosError.response?.status === 401) {
+//       throw new Error('Unauthorized access. Please sign in again.');
+//     } else if (axiosError.response?.status === 403) {
+//       throw new Error('Access forbidden. You do not have permission to perform this action.');
+//     }
+//   }
+//   throw new Error('An unexpected error occurred. Please try again later.');
+// };
 
 /**
  * Fetches all API keys for the current user
