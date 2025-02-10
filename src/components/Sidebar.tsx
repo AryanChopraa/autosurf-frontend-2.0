@@ -2,6 +2,7 @@ import { FC } from 'react';
 import Link from 'next/link';
 import { useRouter, usePathname } from 'next/navigation';
 import { useAuth } from '@/contexts/AuthContext';
+import Image from 'next/image';
 import {
   HomeIcon,
   BookmarkIcon,
@@ -37,9 +38,12 @@ const Sidebar: FC = () => {
       {/* Logo */}
       <div className="relative z-10 p-6 border-b border-black/5 bg-gradient-to-r from-white/80 to-white/40">
         <Link href="/" className="block">
+          <div className="flex items-center gap-2">
+          <Image src="/aslogo.png" alt="Autosurf.ai" width={40} height={40} className="object-contain"/>
           <h1 className="text-xl font-medium bg-gradient-to-r from-[#1B1B1B] to-[#3B3B3B] bg-clip-text text-transparent hover:opacity-80 transition-opacity">
-            autosurf.ai
-          </h1>
+              autosurf
+            </h1>
+          </div>
         </Link>
       </div>
 

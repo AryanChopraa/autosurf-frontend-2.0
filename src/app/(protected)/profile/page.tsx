@@ -107,12 +107,12 @@ export default function ProfilePage() {
             <h2 className="text-lg font-medium text-[#1B1B1B]">Account Settings</h2>
             <div className="mt-6 space-y-4">
               <div className="flex items-center justify-between py-3 px-4 bg-black/5 rounded-[14px]">
-                <div>
+                {/* <div>
                   <p className="text-sm font-medium text-[#1B1B1B]">Delete Account</p>
                   <p className="text-xs text-[#1B1B1B]/60">
                     Permanently delete your account and all data
                   </p>
-                </div>
+                </div> */}
                 <button className="px-4 py-2 text-sm font-medium text-red-600 bg-red-50 rounded-[14px] hover:bg-red-100 transition-colors">
                   Delete
                 </button>

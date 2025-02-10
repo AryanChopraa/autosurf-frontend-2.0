@@ -16,7 +16,7 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "autosurf.ai",
+  title: "autosurf",
   description: "AI-powered web automation platform",
 };
 

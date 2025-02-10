@@ -8,7 +8,7 @@ const Footer = () => {
           {/* Company Info */}
           <div className="col-span-1">
             <div className="flex items-center mb-4"> <Image src="/aslogo.png" alt="Autosurf.ai" width={40} height={40} className="object-contain mr-2" />
-            <h3 className="text-xl font-normal mb-4 items-center justify-center">autosurf.ai</h3></div>
+            <h3 className="text-xl font-normal mb-4 items-center justify-center">autosurf</h3></div>
            
             <p className="text-gray-600 text-sm">
               AI-powered web automation platform making browser automation accessible to everyone.

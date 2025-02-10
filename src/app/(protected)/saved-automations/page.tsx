@@ -37,7 +37,7 @@ export default function SavedAutomations() {
     } catch (err) {
       const errorMessage = err instanceof Error ? err.message : 'Failed to fetch automations';
       setError(errorMessage);
-      toast.error("Failed to fetch automations");
+      // toast.error("Failed to fetch automations");
     } finally {
       setIsLoading(false);
     }
