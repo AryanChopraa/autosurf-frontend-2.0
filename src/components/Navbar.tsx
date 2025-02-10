@@ -40,13 +40,13 @@ export default function Navbar() {
                 <>
                   <Link
                     href="/login"
-                    className="text-[#1B1B1B]/80 hover:text-[#1B1B1B] px-4 py-2 text-sm font-medium"
+                    className="bg-gray-100 hover:bg-gray-200 text-[#1B1B1B]/80 hover:text-[#1B1B1B] px-6 py-3 rounded-[20px] text-sm font-medium transition-colors"
                   >
                     Sign in
                   </Link>
                   <Link
                     href="/signup"
-                    className="bg-[#1B1B1B] text-white px-5 py-2.5 rounded-[14px] text-sm font-medium transition-colors hover:bg-[#2C2C2C]"
+                    className="bg-[#1B1B1B] text-white px-6 py-3 rounded-[20px] text-sm font-medium transition-colors hover:bg-[#2C2C2C]"
                   >
                     Get Started
                   </Link>
