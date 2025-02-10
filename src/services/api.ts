@@ -21,6 +21,8 @@ const apiClient = axios.create({
   },
 });
 
+
+
 // Get auth token for requests
 const getAuthHeader = async () => {
   try {
