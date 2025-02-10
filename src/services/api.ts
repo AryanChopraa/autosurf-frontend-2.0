@@ -15,7 +15,7 @@ const API_BASE_URL = 'https://api.autosurf.tech/api';
 // Create axios instance with default config
 const apiClient = axios.create({
   baseURL: API_BASE_URL,
-  // withCredentials: true,
+  withCredentials: true,
   headers: {
     'Content-Type': 'application/json',
   },
