@@ -130,7 +130,7 @@ export default function SavedAutomations() {
   if (error) {
     return (
       <div className="flex items-center justify-center min-h-screen">
-        <div className="text-red-600">Error: {error}</div>
+        <div className="text-red-600">No automations found</div>
       </div>
     );
   }
