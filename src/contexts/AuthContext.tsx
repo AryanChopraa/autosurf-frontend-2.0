@@ -14,6 +14,11 @@ type AuthContextType = {
   resendVerificationEmail: (email: string) => Promise<void>
 }
 
+const PROD_URL = 'https://api.autosurf.tech'
+const DEV_URL = 'http://localhost:8080'
+
+const BASE_URL = process.env.NODE_ENV === 'production' ? PROD_URL : DEV_URL
+
 const AuthContext = createContext<AuthContextType | undefined>(undefined)
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
@@ -40,7 +45,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       const { data, error } = await supabase.auth.signInWithOAuth({
         provider: 'google',
         options: {
-          redirectTo: 'http://localhost:3000/auth/callback'
+          redirectTo: `${BASE_URL}/auth/callback`
         }
       })
       
@@ -70,7 +75,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         email,
         password,
         options: {
-          emailRedirectTo: 'http://localhost:3000/auth/callback'
+          emailRedirectTo: `${BASE_URL}/auth/callback`
         }
       })
 
