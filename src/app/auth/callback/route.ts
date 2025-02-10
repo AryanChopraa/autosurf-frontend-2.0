@@ -14,7 +14,12 @@ export async function GET(request: Request) {
     await supabase.auth.exchangeCodeForSession(code)
   }
 
+  // Get the current origin or use the environment-specific URL
+  const origin = requestUrl.origin
+  const redirectBase = process.env.NODE_ENV === 'production' && origin.includes('localhost') 
+    ? PROD_URL 
+    : origin
+
   // URL to redirect to after sign in process completes
-  const baseUrl = process.env.NODE_ENV === 'production' ? PROD_URL : DEV_URL
-  return NextResponse.redirect(new URL('/dashboard', baseUrl))
+  return NextResponse.redirect(new URL('/dashboard', redirectBase))
 } 
