@@ -1,5 +1,5 @@
 import Link from 'next/link';
-
+import Image from 'next/image';
 const Footer = () => {
   return (
     <footer className="w-full bg-white border-t border-gray-100">
@@ -7,7 +7,9 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Company Info */}
           <div className="col-span-1">
-            <h3 className="font-serif text-xl font-semibold mb-4">autosurf.ai</h3>
+            <div className="flex items-center mb-4"> <Image src="/aslogo.png" alt="Autosurf.ai" width={40} height={40} className="object-contain mr-2" />
+            <h3 className="text-xl font-normal mb-4 items-center justify-center">autosurf.ai</h3></div>
+           
             <p className="text-gray-600 text-sm">
               AI-powered web automation platform making browser automation accessible to everyone.
             </p>

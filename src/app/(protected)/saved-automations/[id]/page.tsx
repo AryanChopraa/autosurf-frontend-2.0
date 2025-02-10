@@ -145,7 +145,7 @@ export default function SavedAutomationView({ params }: { params: Promise<{ id: 
               case 'failed':
                 console.log('[WebSocket] Automation failed:', message.error);
                 setStatus('failed');
-                setFinalAnswer(message.error);
+                setFinalAnswer("No automations found");
                 setTimeout(() => {
                   console.log('[WebSocket] Closing connection after delay');
                   setShowDialog(true);
