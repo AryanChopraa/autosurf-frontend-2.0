@@ -11,7 +11,7 @@ const Footer = () => {
             <h3 className="text-xl font-normal mb-4 items-center justify-center">autosurf</h3></div>
            
             <p className="text-gray-600 text-sm">
-              AI-powered web automation platform making browser automation accessible to everyone.
+            Our autonomous AI agents understand context, adapt to changes, and execute complex web tasks just like a human would. 
             </p>
           </div>
 
