@@ -18,15 +18,7 @@ const apiClient = axios.create({
   withCredentials: true,
   headers: {
     'Content-Type': 'application/json',
-    'Access-Control-Allow-Credentials': 'true',
-    'Access-Control-Allow-Origin': 'https://autosurf.tech'
   },
-});
-
-// Add request interceptor to handle CORS preflight
-apiClient.interceptors.request.use((config) => {
-  config.headers['Access-Control-Allow-Credentials'] = 'true';
-  return config;
 });
 
 // Get auth token for requests
