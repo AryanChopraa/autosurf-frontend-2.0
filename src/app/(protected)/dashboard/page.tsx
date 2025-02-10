@@ -81,12 +81,20 @@ export default function DashboardPage() {
               {isLoading ? 'Starting Agent...' : 'Start Agent'}
             </button>
           </div>
+        
+          {/* Example Prompts Heading */}
+          <div className="px-2 mb-4">
+            <h2 className="text-xl font-thin text-[#1B1B1B]">Examples</h2>
+            <p className="text-[#1B1B1B]/60 mt-1">Click any example to try it out</p>
+          </div>
 
           {/* Quick Actions Section */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+            
             {quickActions.map((action, index) => (
               <button
                 key={index}
+                onClick={() => setObjective(action.objective)}
                 className="bg-white/70 backdrop-blur-sm rounded-[20px] border border-black/5 p-6 text-left hover:shadow-md transition-shadow group"
               >
                 <h3 className="font-medium text-[#1B1B1B] mb-2 group-hover:text-[#2C2C2C]">{action.title}</h3>
@@ -148,15 +156,13 @@ export default function DashboardPage() {
 
 const quickActions = [
   {
-    title: 'Data Scraping',
-    description: 'Extract data from websites automatically'
+    title: 'Stock Price Check',
+    description: 'Go to Google and search for Apple stock price, then tell me the current price and any recent trends',
+    objective: 'Go to google.com, search for "AAPL stock price", and tell me the current price of Apple stock along with any significant price changes today.'
   },
   {
-    title: 'Form Automation',
-    description: 'Automate form filling and submissions'
-  },
-  {
-    title: 'Web Testing',
-    description: 'Test web applications and workflows'
+    title: 'Amazon Watch Analysis',
+    description: 'Search for watches on Amazon and analyze the first result',
+    objective: 'Go to amazon.com, search for watches, click on the first watch result, and provide me with a detailed list of its features, price, and specifications.'
   }
 ]; 

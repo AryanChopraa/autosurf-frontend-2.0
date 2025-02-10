@@ -6,11 +6,11 @@ import { useAuth } from '@/contexts/AuthContext';
 import Image from 'next/image';
 
 export default function Navbar() {
-  const { user, signOut } = useAuth();
+  const { user } = useAuth();
 
   return (
-    <div className="fixed top-0 left-0 right-0 z-50 px-4 py-4">
-      <nav className="mx-auto max-w-[90rem] rounded-[30px] bg-white/70 backdrop-blur-xl border border-black/5 shadow-lg">
+    <div className="fixed top-0 left-0 right-0 z-50 px-4 py-4 mx-20">
+      <nav className="mx-auto max-w-[90rem] rounded-[50px] bg-white/70 backdrop-blur-xl border border-black/5 shadow-lg">
         <div className="px-8">
           <div className="flex justify-between items-center h-20">
             {/* Logo and brand */}
