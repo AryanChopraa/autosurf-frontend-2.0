@@ -14,12 +14,12 @@ type AuthContextType = {
   resendVerificationEmail: (email: string) => Promise<void>
 }
 
-const API_PROD_URL = 'https://api.autosurf.tech'
-const API_DEV_URL = 'http://localhost:8080'
+// const API_PROD_URL = 'https://api.autosurf.tech'
+// const API_DEV_URL = 'http://localhost:8080'
 const FRONTEND_PROD_URL = 'https://autosurf.tech'
 const FRONTEND_DEV_URL = 'http://localhost:3000'
 
-const API_BASE_URL = process.env.NODE_ENV === 'production' ? API_PROD_URL : API_DEV_URL
+// const API_BASE_URL = process.env.NODE_ENV === 'production' ? API_PROD_URL : API_DEV_URL
 const FRONTEND_BASE_URL = process.env.NODE_ENV === 'production' ? FRONTEND_PROD_URL : FRONTEND_DEV_URL
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined)
