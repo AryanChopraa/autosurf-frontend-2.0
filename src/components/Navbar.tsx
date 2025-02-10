@@ -3,6 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { useAuth } from '@/contexts/AuthContext';
+import Image from 'next/image';
 
 export default function Navbar() {
   const { user, signOut } = useAuth();
@@ -14,6 +15,7 @@ export default function Navbar() {
           <div className="flex justify-between items-center h-14">
             {/* Logo and brand */}
             <Link href="/" className="flex items-center">
+              <Image src="/aslogo.png" alt="Autosurf.ai" width={40} height={40} className="object-contain mr-2" />
               <span className="text-xl font-[var(--font-serif)] font-medium tracking-tight text-[#1B1B1B]">autosurf.ai</span>
             </Link>
 
