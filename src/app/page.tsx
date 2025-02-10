@@ -16,7 +16,7 @@ export default function HomePage() {
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
               <div className="grid md:grid-cols-2 gap-8 items-center">
                 <div className="text-left">
-                  <h1 className="text-[2.5rem] leading-[1.2] tracking-[-0.02em] font-semibold text-[#1B1B1B] sm:text-6xl">
+                  <h1 className="text-[2.5rem] leading-[1.2] tracking-[-0.02em] font-thin text-[#1B1B1B] sm:text-6xl">
                     Your AI Automation Companion
                   </h1>
                   <p className="mt-6 text-lg sm:text-xl leading-relaxed text-[#1B1B1B]/70">

@@ -55,7 +55,7 @@ export default function DashboardPage() {
       <div className="relative z-10 p-8">
         <div className="max-w-6xl mx-auto">
           <div className="mb-12 text-center">
-            <h1 className="text-6xl font-semibold bg-gradient-to-r from-[#1B1B1B] via-[#4A4A4A] to-[#1B1B1B] bg-clip-text text-transparent font-[var(--font-playfair)] tracking-tight leading-tight">
+            <h1 className="text-6xl bg-gradient-to-r from-[#1B1B1B] via-[#4A4A4A] to-[#1B1B1B] bg-clip-text text-transparent font-[var(--font-playfair)] tracking-tight leading-tight">
               Enter a goal for your browser agent.
             </h1>
             {/* <p className="text-[#1B1B1B]/60 mt-3 text-lg font-[var(--font-serif)]">Let AI handle your browser tasks while you focus on what matters</p> */}
