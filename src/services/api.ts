@@ -129,7 +129,7 @@ export async function startBrowserSession(runObjective: string): Promise<Browser
   try {
     const headers = await getAuthHeader();
     const response = await apiClient.post<BrowserSessionResponse>(`/agent/create-run`, { runObjective }, { headers });
-    console.log("response", response.data);
+    // console.log("response", response.data);
     return response.data;
   } catch (error: any) {
     console.log("error", error);
@@ -172,7 +172,7 @@ export const getAllRuns = async (): Promise<AgentRunsResponse> => {
   try {
     const headers = await getAuthHeader();
     const response = await apiClient.get<AgentRunsResponse>(`/agent/all-runs`, { headers });
-    console.log("response", response.data);
+    // console.log("response", response.data);
     return response.data;
   } catch (error) {
     // handleApiError(error);
@@ -184,7 +184,7 @@ export const getAllAutomations = async (): Promise<AutomationResponse> => {
   try {
     const headers = await getAuthHeader();
     const response = await apiClient.get<AutomationResponse>(`/automations/fetch/all`, { headers });
-    console.log("response", response.data);
+    // console.log("response", response.data);
     return response.data;
   } catch (error: any) {
     // handleApiError(error);
@@ -197,7 +197,7 @@ export const createAutomation = async (data: CreateAutomationRequest): Promise<a
   try {
     const headers = await getAuthHeader();
     const response = await apiClient.post(`/automations/create`, data, { headers });
-    console.log("response", response.data);
+    // console.log("response", response.data);
     return response.data;
   } catch (error: any) {
     // handleApiError(error);
@@ -209,7 +209,7 @@ export const updateAutomation = async (data: Automation): Promise<any> => {
   try {
     const headers = await getAuthHeader();
     const response = await apiClient.put(`/automations/update`, data, { headers });
-    console.log("response", response.data);
+    // console.log("response", response.data);
     return response.data;
   } catch (error: any) {
     // handleApiError(error);
@@ -221,7 +221,7 @@ export const deleteAutomation = async (id: string): Promise<any> => {
   try {
     const headers = await getAuthHeader();
     const response = await apiClient.delete(`/automations/delete/${id}`, { headers });
-    console.log("response", response.data);
+    // console.log("response", response.data);
     return response.data;
   } catch (error: any) {
     // handleApiError(error);
@@ -233,7 +233,7 @@ export const fetchAutomationById = async (id: string): Promise<any> => {
   try {
     const headers = await getAuthHeader();
     const response = await apiClient.get(`/fetch/${id}`, { headers });
-    console.log("response", response.data);
+    // console.log("response", response.data);
     return response.data;
   } catch (error: any) {
     // handleApiError(error);

@@ -31,7 +31,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     // Check active sessions and sets the user
     const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
-      console.log('Auth state changed:', event, session)
+      // console.log('Auth state changed:', event, session)
       if (event === 'SIGNED_IN') {
         setUser(session?.user ?? null)
       } else if (event === 'SIGNED_OUT') {
@@ -66,7 +66,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         throw error
       }
       
-      console.log('Sign in successful:', data)
+      // console.log('Sign in successful:', data)
     } catch (error) {
       console.error('Detailed error:', error)
       toast.error('An error occurred during sign in. Please try again later.')

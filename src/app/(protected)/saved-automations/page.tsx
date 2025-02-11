@@ -48,7 +48,7 @@ export default function SavedAutomations() {
   }, []);
 
   const handleRunAutomation = (id: string) => {
-    console.log('Running automation:', id);
+    // console.log('Running automation:', id);
     // Implement run logic
     router.push(`/saved-automations/${id}`);
   };
