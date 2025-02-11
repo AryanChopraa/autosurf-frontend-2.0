@@ -77,10 +77,12 @@ export default function ResultDialog({ isOpen, onClose, status, finalAnswer }: R
           <div className={`p-4 rounded-xl ${
             status === 'completed' ? 'bg-green-100/50' : 'bg-red-100/50'
           }`}>
-            <p className={`text-base leading-relaxed font-normal ${
+            <p className={`text-base leading-relaxed font-normal break-words whitespace-pre-wrap ${
               status === 'completed' ? 'text-green-700' : 'text-red-700'
             }`}>
-              {finalAnswer}
+              {finalAnswer?.includes("401 Incorrect API key provided: sk-proj-") 
+                ? "Unexpected error occurred. Please try again later."
+                : finalAnswer}
             </p>
           </div>
           
