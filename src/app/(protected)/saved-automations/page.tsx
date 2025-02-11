@@ -138,10 +138,10 @@ export default function SavedAutomations() {
   return (
     <>
       <BackgroundTexture />
-      <div className="relative z-10 p-8">
+      <div className="relative z-10 p-4 sm:p-8">
         <div className="max-w-6xl mx-auto">
-          <div className="flex justify-between items-center mb-8">
-            <h1 className="text-2xl font-medium text-[#1B1B1B]">Saved Automations</h1>
+          <div className="flex justify-between items-center mb-6 sm:mb-8">
+            <h1 className="text-xl sm:text-2xl font-medium text-[#1B1B1B]">Saved Automations</h1>
             {/* <button 
               onClick={() => router.push('/browser')}
               className="bg-[#1B1B1B] text-white px-6 py-2.5 rounded-[14px] text-sm transition-colors hover:bg-[#2C2C2C]"
@@ -150,21 +150,21 @@ export default function SavedAutomations() {
             </button> */}
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {automations.map((automation) => (
               <div
                 key={automation.id}
-                className="bg-white/70 backdrop-blur-sm rounded-[20px] border border-black/5 p-6 shadow-sm hover:shadow-md transition-shadow relative"
+                className="bg-white/70 backdrop-blur-sm rounded-[16px] sm:rounded-[20px] border border-black/5 p-4 sm:p-6 shadow-sm hover:shadow-md transition-shadow relative"
               >
                 {deleteConfirmation === automation.id && (
-                  <div className="absolute inset-0 bg-white/95 backdrop-blur-sm rounded-[20px] p-6 flex flex-col items-center justify-center space-y-4">
-                    <p className="text-center text-[#1B1B1B] font-medium">Are you sure you want to delete this automation?</p>
-                    <p className="text-sm text-[#1B1B1B]/60 text-center">{automation.automation_name}</p>
-                    <div className="flex gap-3">
+                  <div className="absolute inset-0 bg-white/95 backdrop-blur-sm rounded-[16px] sm:rounded-[20px] p-4 sm:p-6 flex flex-col items-center justify-center space-y-3 sm:space-y-4">
+                    <p className="text-center text-[#1B1B1B] font-medium text-sm sm:text-base">Are you sure you want to delete this automation?</p>
+                    <p className="text-xs sm:text-sm text-[#1B1B1B]/60 text-center">{automation.automation_name}</p>
+                    <div className="flex gap-2 sm:gap-3">
                       <button
                         onClick={() => handleDeleteConfirm(automation.id)}
                         disabled={isDeleting === automation.id}
-                        className="px-4 py-2 bg-red-600 text-white rounded-[14px] text-sm hover:bg-red-700 transition-colors disabled:opacity-50"
+                        className="px-3 sm:px-4 py-2 bg-red-600 text-white rounded-[12px] sm:rounded-[14px] text-xs sm:text-sm hover:bg-red-700 transition-colors disabled:opacity-50"
                       >
                         {isDeleting === automation.id ? (
                           <div className="animate-spin rounded-full h-4 w-4 border-2 border-white"></div>
@@ -174,7 +174,7 @@ export default function SavedAutomations() {
                       </button>
                       <button
                         onClick={handleDeleteCancel}
-                        className="px-4 py-2 bg-gray-100 text-gray-600 rounded-[14px] text-sm hover:bg-gray-200 transition-colors"
+                        className="px-3 sm:px-4 py-2 bg-gray-100 text-gray-600 rounded-[12px] sm:rounded-[14px] text-xs sm:text-sm hover:bg-gray-200 transition-colors"
                       >
                         Cancel
                       </button>
@@ -182,35 +182,35 @@ export default function SavedAutomations() {
                   </div>
                 )}
 
-                <div className="flex justify-between items-start mb-4">
+                <div className="flex justify-between items-start mb-3 sm:mb-4">
                   <div className="w-full">
                     {editingState.id === automation.id ? (
-                      <div className="space-y-3 w-full">
+                      <div className="space-y-2 sm:space-y-3 w-full">
                         <input
                           type="text"
                           value={editingState.automation_name}
                           onChange={(e) => setEditingState(prev => ({ ...prev, automation_name: e.target.value }))}
-                          className="w-full px-4 py-2.5 border border-gray-300 rounded-[14px] focus:outline-none focus:ring-2 focus:ring-[#1B1B1B] bg-white"
+                          className="w-full px-3 sm:px-4 py-2 sm:py-2.5 border border-gray-300 rounded-[12px] sm:rounded-[14px] focus:outline-none focus:ring-2 focus:ring-[#1B1B1B] bg-white text-sm sm:text-base"
                           placeholder="Automation Name"
                         />
                         <textarea
                           value={editingState.objective}
                           onChange={(e) => setEditingState(prev => ({ ...prev, objective: e.target.value }))}
-                          className="w-full px-4 py-2.5 border border-gray-300 rounded-[14px] focus:outline-none focus:ring-2 focus:ring-[#1B1B1B] bg-white resize-none"
+                          className="w-full px-3 sm:px-4 py-2 sm:py-2.5 border border-gray-300 rounded-[12px] sm:rounded-[14px] focus:outline-none focus:ring-2 focus:ring-[#1B1B1B] bg-white resize-none text-sm sm:text-base"
                           placeholder="Objective"
                           rows={3}
                         />
                       </div>
                     ) : (
                       <>
-                        <h3 className="font-medium text-[#1B1B1B] mb-1">{automation.automation_name}</h3>
-                        <p className="text-sm text-[#1B1B1B]/60">{automation.objective}</p>
+                        <h3 className="font-medium text-[#1B1B1B] mb-1 text-sm sm:text-base">{automation.automation_name}</h3>
+                        <p className="text-xs sm:text-sm text-[#1B1B1B]/60">{automation.objective}</p>
                       </>
                     )}
                   </div>
                 </div>
                 
-                <div className="text-sm text-[#1B1B1B]/60 mb-4">
+                <div className="text-xs sm:text-sm text-[#1B1B1B]/60 mb-3 sm:mb-4">
                   Created: {new Date(automation.created_at).toLocaleDateString()}
                 </div>
 
@@ -220,44 +220,44 @@ export default function SavedAutomations() {
                       <button
                         onClick={() => handleSaveEdit(automation)}
                         disabled={isUpdating === automation.id}
-                        className="flex items-center justify-center flex-1 px-4 py-2 rounded-[14px] bg-green-600 text-white text-sm hover:bg-green-700 transition-colors disabled:opacity-50"
+                        className="flex items-center justify-center flex-1 px-3 sm:px-4 py-2 rounded-[12px] sm:rounded-[14px] bg-green-600 text-white text-xs sm:text-sm hover:bg-green-700 transition-colors disabled:opacity-50"
                       >
                         {isUpdating === automation.id ? (
-                          <div className="animate-spin rounded-full h-4 w-4 border-2 border-white"></div>
+                          <div className="animate-spin rounded-full h-3 w-3 sm:h-4 sm:w-4 border-2 border-white"></div>
                         ) : (
                           <>
-                            <CheckIcon className="w-4 h-4 mr-2" />
+                            <CheckIcon className="w-3 h-3 sm:w-4 sm:h-4 mr-1.5 sm:mr-2" />
                             Save
                           </>
                         )}
                       </button>
                       <button
                         onClick={handleCancelEdit}
-                        className="flex items-center justify-center px-4 py-2 rounded-[14px] bg-gray-100 text-gray-600 text-sm hover:bg-gray-200 transition-colors"
+                        className="flex items-center justify-center px-3 sm:px-4 py-2 rounded-[12px] sm:rounded-[14px] bg-gray-100 text-gray-600 text-xs sm:text-sm hover:bg-gray-200 transition-colors"
                       >
-                        <XMarkIcon className="w-4 h-4" />
+                        <XMarkIcon className="w-3 h-3 sm:w-4 sm:h-4" />
                       </button>
                     </>
                   ) : (
                     <>
                       <button
                         onClick={() => handleRunAutomation(automation.id)}
-                        className="flex items-center justify-center flex-1 px-4 py-2 rounded-[14px] bg-[#1B1B1B] text-white text-sm hover:bg-[#2C2C2C] transition-colors"
+                        className="flex items-center justify-center flex-1 px-3 sm:px-4 py-2 rounded-[12px] sm:rounded-[14px] bg-[#1B1B1B] text-white text-xs sm:text-sm hover:bg-[#2C2C2C] transition-colors"
                       >
-                        <PlayIcon className="w-4 h-4 mr-2" />
+                        <PlayIcon className="w-3 h-3 sm:w-4 sm:h-4 mr-1.5 sm:mr-2" />
                         Run
                       </button>
                       <button
                         onClick={() => handleEditAutomation(automation)}
-                        className="flex items-center justify-center px-4 py-2 rounded-[14px] bg-black/5 text-[#1B1B1B] text-sm hover:bg-black/10 transition-colors"
+                        className="flex items-center justify-center px-3 sm:px-4 py-2 rounded-[12px] sm:rounded-[14px] bg-black/5 text-[#1B1B1B] text-xs sm:text-sm hover:bg-black/10 transition-colors"
                       >
-                        <PencilIcon className="w-4 h-4" />
+                        <PencilIcon className="w-3 h-3 sm:w-4 sm:h-4" />
                       </button>
                       <button
                         onClick={() => handleDeleteClick(automation.id)}
-                        className="flex items-center justify-center px-4 py-2 rounded-[14px] bg-red-50 text-red-600 text-sm hover:bg-red-100 transition-colors"
+                        className="flex items-center justify-center px-3 sm:px-4 py-2 rounded-[12px] sm:rounded-[14px] bg-red-50 text-red-600 text-xs sm:text-sm hover:bg-red-100 transition-colors"
                       >
-                        <TrashIcon className="w-4 h-4" />
+                        <TrashIcon className="w-3 h-3 sm:w-4 sm:h-4" />
                       </button>
                     </>
                   )}

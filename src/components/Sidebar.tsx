@@ -26,7 +26,7 @@ const Sidebar: FC = () => {
   };
 
   return (
-    <div className="fixed top-0 left-0 h-screen w-72 bg-white font-[var(--font-serif)] shadow-[4px_0_24px_rgba(0,0,0,0.02)] border-r border-black/5 flex flex-col overflow-hidden z-50">
+    <div className="h-full w-full bg-white font-[var(--font-serif)] shadow-[4px_0_24px_rgba(0,0,0,0.02)] border-r border-black/5 flex flex-col">
       {/* Background Pattern */}
       <div className="absolute inset-0 z-0 opacity-[0.03]" 
         style={{
@@ -35,12 +35,12 @@ const Sidebar: FC = () => {
         }}
       />
 
-      {/* Logo */}
-      <div className="relative z-10 p-6 border-b border-black/5 bg-gradient-to-r from-white/80 to-white/40">
+      {/* Logo - Hidden on mobile */}
+      <div className="relative z-10 p-6 border-b border-black/5 bg-gradient-to-r from-white/80 to-white/40 hidden lg:block">
         <Link href="/" className="block">
           <div className="flex items-center gap-2">
-          <Image src="/aslogo.png" alt="Autosurf.ai" width={40} height={40} className="object-contain"/>
-          <h1 className="text-xl font-medium bg-gradient-to-r from-[#1B1B1B] to-[#3B3B3B] bg-clip-text text-transparent hover:opacity-80 transition-opacity">
+            <Image src="/aslogo.png" alt="Autosurf.ai" width={40} height={40} className="object-contain"/>
+            <h1 className="text-xl font-medium bg-gradient-to-r from-[#1B1B1B] to-[#3B3B3B] bg-clip-text text-transparent hover:opacity-80 transition-opacity">
               autosurf
             </h1>
           </div>
@@ -48,7 +48,7 @@ const Sidebar: FC = () => {
       </div>
 
       {/* Navigation Links */}
-      <nav className="relative z-10 flex-1 p-4 bg-gradient-to-b from-white/80 via-white/60 to-white/40">
+      <nav className="relative z-10 flex-1 p-4 bg-gradient-to-b from-white/80 via-white/60 to-white/40 overflow-y-auto">
         <div className="space-y-2">
           <Link 
             href="/dashboard" 

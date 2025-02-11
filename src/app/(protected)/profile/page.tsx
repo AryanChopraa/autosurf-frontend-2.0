@@ -42,26 +42,26 @@ export default function ProfilePage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#FAF9F6] pt-24 font-[var(--font-serif)]">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-white rounded-[20px] border border-black/5 p-8 shadow-sm">
-          <div className="flex items-start justify-between">
+    <div className="min-h-screen pt-16 sm:pt-24 font-[var(--font-serif)] px-4 sm:px-6">
+      <div className="max-w-4xl mx-auto">
+        <div className="bg-white rounded-[20px] border border-black/5 p-4 sm:p-8 shadow-sm">
+          <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 sm:gap-0">
             <div>
-              <h1 className="text-2xl font-medium text-[#1B1B1B]">Profile</h1>
+              <h1 className="text-xl sm:text-2xl font-medium text-[#1B1B1B]">Profile</h1>
               <p className="mt-1 text-sm text-[#1B1B1B]/60">
                 Manage your account settings
               </p>
             </div>
             <button
               onClick={() => setIsEditing(!isEditing)}
-              className="px-4 py-2 text-sm font-medium text-[#1B1B1B] bg-black/5 rounded-[14px] hover:bg-black/10 transition-colors"
+              className="w-full sm:w-auto px-4 py-2 text-sm font-medium text-[#1B1B1B] bg-black/5 rounded-[14px] hover:bg-black/10 transition-colors"
             >
               {isEditing ? 'Cancel' : 'Edit Profile'}
             </button>
           </div>
 
-          <div className="mt-8 space-y-6">
-            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
+          <div className="mt-6 sm:mt-8 space-y-6">
+            <div className="grid grid-cols-1 gap-4 sm:gap-6 sm:grid-cols-2">
               <div>
                 <label className="block text-sm font-medium text-[#1B1B1B]/60">
                   Email
@@ -71,7 +71,7 @@ export default function ProfilePage() {
                     type="email"
                     disabled
                     value={user?.email || ''}
-                    className="w-full bg-black/5 border border-transparent rounded-[14px] px-4 py-2.5 text-[#1B1B1B] font-medium focus:outline-none focus:ring-2 focus:ring-black/10"
+                    className="w-full bg-black/5 border border-transparent rounded-[14px] px-3 sm:px-4 py-2.5 text-[#1B1B1B] text-sm sm:text-base font-medium focus:outline-none focus:ring-2 focus:ring-black/10"
                   />
                 </div>
               </div>
@@ -85,7 +85,7 @@ export default function ProfilePage() {
                     type="text"
                     disabled={!isEditing}
                     defaultValue={user?.user_metadata?.full_name || ''}
-                    className="w-full bg-black/5 border border-transparent rounded-[14px] px-4 py-2.5 text-[#1B1B1B] font-medium focus:outline-none focus:ring-2 focus:ring-black/10 disabled:opacity-50"
+                    className="w-full bg-black/5 border border-transparent rounded-[14px] px-3 sm:px-4 py-2.5 text-[#1B1B1B] text-sm sm:text-base font-medium focus:outline-none focus:ring-2 focus:ring-black/10 disabled:opacity-50"
                   />
                 </div>
               </div>
@@ -95,7 +95,7 @@ export default function ProfilePage() {
               <div className="flex justify-end">
                 <button
                   type="submit"
-                  className="px-6 py-2.5 text-sm font-medium text-white bg-[#1B1B1B] rounded-[14px] hover:bg-[#2C2C2C] transition-colors"
+                  className="w-full sm:w-auto px-6 py-2.5 text-sm font-medium text-white bg-[#1B1B1B] rounded-[14px] hover:bg-[#2C2C2C] transition-colors"
                 >
                   Save Changes
                 </button>
@@ -103,23 +103,11 @@ export default function ProfilePage() {
             )}
           </div>
 
-          <div className="mt-12 border-t border-black/5 pt-8">
-            <h2 className="text-lg font-medium text-[#1B1B1B]">Account Settings</h2>
-            <div className="mt-6 space-y-4">
-              <div className="flex items-center justify-between py-3 px-4 bg-black/5 rounded-[14px]">
-                {/* <div>
-                  <p className="text-sm font-medium text-[#1B1B1B]">Delete Account</p>
-                  <p className="text-xs text-[#1B1B1B]/60">
-                    Permanently delete your account and all data
-                  </p>
-                </div> */}
-                <button className="px-4 py-2 text-sm font-medium text-red-600 bg-red-50 rounded-[14px] hover:bg-red-100 transition-colors">
-                  Delete
-                </button>
-              </div>
-              
-              <div className="flex items-center justify-between py-3 px-4 bg-black/5 rounded-[14px]">
-                <div>
+          <div className="mt-8 sm:mt-12 border-t border-black/5 pt-6 sm:pt-8">
+            <h2 className="text-base sm:text-lg font-medium text-[#1B1B1B]">Account Settings</h2>
+            <div className="mt-4 sm:mt-6 space-y-3 sm:space-y-4">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between py-3 px-3 sm:px-4 bg-black/5 rounded-[14px]">
+                <div className="mb-2 sm:mb-0">
                   <p className="text-sm font-medium text-[#1B1B1B]">Sign Out</p>
                   <p className="text-xs text-[#1B1B1B]/60">
                     Sign out of your account
@@ -127,7 +115,7 @@ export default function ProfilePage() {
                 </div>
                 <button 
                   onClick={handleSignOut}
-                  className="px-4 py-2 text-sm font-medium text-[#1B1B1B] bg-black/10 rounded-[14px] hover:bg-black/20 transition-colors"
+                  className="w-full sm:w-auto px-4 py-2 text-sm font-medium text-[#1B1B1B] bg-black/10 rounded-[14px] hover:bg-black/20 transition-colors"
                 >
                   Sign Out
                 </button>
