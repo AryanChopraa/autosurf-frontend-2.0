@@ -154,11 +154,11 @@ export default function DashboardPage() {
 }
 
 const quickActions = [
-  {
-    title: 'Stock Price Check',
-    description: 'Go to Google and search for Apple stock price, then tell me the current price and any recent trends',
-    objective: 'Go to google.com, search for "AAPL stock price", and tell me the current price of Apple stock along with any significant price changes today.'
-  },
+  // {
+  //   title: 'Stock Price Check',
+  //   description: 'Go to Google and search for Apple stock price, then tell me the current price and any recent trends',
+  //   objective: 'Go to google.com, search for "AAPL stock price", and tell me the current price of Apple stock along with any significant price changes today.'
+  // },
   {
     title: 'Amazon Watch Analysis',
     description: 'Search for watches on Amazon and analyze the first result',
