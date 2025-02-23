@@ -10,8 +10,8 @@ const supabase = createClient(
 );
 
 // API Configuration
-// const API_BASE_URL = 'https://api.autosurf.tech/api';
-const API_BASE_URL = 'http://localhost:8080/api';
+const API_BASE_URL = 'https://api.autosurf.tech/api';
+// const API_BASE_URL = 'http://localhost:8080/api';
 
 // Create axios instance with default config
 const apiClient = axios.create({
